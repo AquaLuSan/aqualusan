@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Consultation | AquaLuSan</title>
+  <meta name="description" content="Book a consultation with AquaLuSan to plan a commercial aquarium for your venue.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="canonical" href="https://aqualusan.com.au/book-a-consultation.html">
+</head>
+<body data-page="consult">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Book a Consultation</p>
+          <h1>Talk through placement, rental, packages and care.</h1>
+          <p class="lede">A consultation is the right first step if the interior is still in design, you are comparing options, or you would like site advice before quoting.</p>
+          <ul class="list">
+            <li>Venue type and guest flow</li>
+            <li>Buy, rent or package</li>
+            <li>Maintenance around trading hours</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-call" href="tel:+61456493395" data-phone>Call AquaLuSan</a>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp target="_blank" rel="noopener">WhatsApp Us</a>
+            <a class="btn btn-secondary" href="request-a-quote.html">Request a Quote</a>
+          </div>
+        </div>
+        <form class="form" data-lead="consultation">
+          <div class="form-grid">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="Name" required>
+            </div>
+            <div>
+              <label for="business">Business name</label>
+              <input id="business" name="Business name" required>
+            </div>
+            <div class="full">
+              <label for="venue">Venue type</label>
+              <select id="venue" name="Venue type" required>
+                <option value="">Select one</option>
+                <option>Home</option>
+                <option>Restaurant</option>
+                <option>Café</option>
+                <option>Office</option>
+                <option>Hotel</option>
+                <option>Retail store</option>
+                <option>Shopping centre</option>
+                <option>Entertainment venue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" required>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="Phone" type="tel" required>
+            </div>
+            <div class="full">
+              <label for="when">Preferred time</label>
+              <input id="when" name="Preferred time" placeholder="e.g. Tuesday afternoon, site visit or video call">
+            </div>
+            <div class="full">
+              <label for="notes">What you would like to discuss</label>
+              <textarea id="notes" name="Discussion notes"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Book a Consultation</button>
+          </div>
+          <p class="form-note">Submitting opens WhatsApp with your consultation request for Eric Liu. You can also call 0456 493 395.</p>
+          <div class="alert" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/site.js"></script>
+</body>
+</html>

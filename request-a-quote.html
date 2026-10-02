@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a Quote | AquaLuSan</title>
+  <meta name="description" content="Request a commercial aquarium quote from AquaLuSan for design, rental, packages or maintenance.">
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="canonical" href="https://aqualusan.com.au/request-a-quote.html">
+</head>
+<body data-page="quote">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Request a Quote</p>
+          <h1>Tell us about the venue and we will prepare a quote.</h1>
+          <p class="lede">Include as much as you can: suburb, venue type, approximate size and whether you need purchase, rental, a package or maintenance only.</p>
+          <ul class="list">
+            <li>Photos or floor plans help us size the display</li>
+            <li>Mention access, loading docks and trading hours</li>
+            <li>Prefer a conversation first? Book a consultation</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn btn-call" href="tel:+61456493395" data-phone>Call AquaLuSan</a>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp target="_blank" rel="noopener">WhatsApp Us</a>
+            <a class="btn btn-secondary" href="book-a-consultation.html">Book a Consultation</a>
+          </div>
+        </div>
+        <form class="form" data-lead="quote request">
+          <div class="form-grid">
+            <div>
+              <label for="business">Business name</label>
+              <input id="business" name="Business name" required>
+            </div>
+            <div>
+              <label for="venue">Venue type</label>
+              <select id="venue" name="Venue type" required>
+                <option value="">Select one</option>
+                <option>Home</option>
+                <option>Restaurant</option>
+                <option>Café</option>
+                <option>Office</option>
+                <option>Hotel</option>
+                <option>Retail store</option>
+                <option>Shopping centre</option>
+                <option>Entertainment venue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="location">Suburb / city</label>
+              <input id="location" name="Location" required>
+            </div>
+            <div>
+              <label for="service">Service needed</label>
+              <select id="service" name="Service needed" required>
+                <option value="">Select one</option>
+                <option value="Aquarium equipment import & wholesale">Aquarium equipment import &amp; wholesale</option>
+                <option value="Commercial design & installation">Commercial design &amp; installation</option>
+                <option value="Aquarium rental">Aquarium rental</option>
+                <option value="All-in-one package">All-in-one package</option>
+                <option value="Maintenance only">Maintenance only</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="contact-name">Contact name</label>
+              <input id="contact-name" name="Contact name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="Email" type="email" required>
+            </div>
+            <div class="full">
+              <label for="phone">Phone</label>
+              <input id="phone" name="Phone" type="tel" required>
+            </div>
+            <div class="full">
+              <label for="notes">Project notes</label>
+              <textarea id="notes" name="Project notes" placeholder="Size, photos to follow, timeline, access notes"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Request a Quote</button>
+          </div>
+          <p class="form-note">Submitting opens WhatsApp with your quote request for Eric Liu. You can also call 0456 493 395.</p>
+          <div class="alert" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/site.js"></script>
+</body>
+</html>

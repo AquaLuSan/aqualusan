@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="520" fill="#eef2f8"/>
+  <rect x="0" y="360" width="800" height="160" fill="#d5deeb"/>
+  <rect x="120" y="90" width="560" height="300" fill="#243f86"/>
+  <rect x="140" y="110" width="520" height="250" fill="#3a62b8"/>
+  <path d="M180 360 C210 250 240 200 270 150 C300 220 320 280 350 360Z" fill="#1e3a6e"/>
+  <path d="M420 360 C460 220 500 170 550 120 C580 210 610 280 650 360Z" fill="#24488a"/>
+  <ellipse cx="360" cy="210" rx="24" ry="12" fill="#e0b84a"/>
+  <rect x="80" y="370" width="140" height="18" fill="#c9b79a"/>
+  <rect x="580" y="370" width="140" height="18" fill="#c9b79a"/>
+</svg>

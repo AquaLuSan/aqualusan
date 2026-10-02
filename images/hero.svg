@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9bb8e8"/>
+      <stop offset="40%" stop-color="#3a62b8"/>
+      <stop offset="100%" stop-color="#1a2f5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="640" fill="url(#water)"/>
+  <rect x="70" y="70" width="760" height="500" rx="18" fill="#122248" opacity="0.25"/>
+  <rect x="90" y="90" width="720" height="430" fill="#2a4a94"/>
+  <path d="M90 520h720v40H90z" fill="#d8e2ef"/>
+  <path d="M140 520 C170 360 190 300 220 210 C250 320 270 390 310 520Z" fill="#1e3a6e"/>
+  <path d="M280 520 C310 340 340 260 380 180 C410 280 430 390 470 520Z" fill="#2f5cb0"/>
+  <path d="M520 520 C560 330 600 250 650 170 C680 290 710 400 760 520Z" fill="#24488a"/>
+  <ellipse cx="340" cy="250" rx="34" ry="18" fill="#e0b84a"/>
+  <path d="M372 248 C420 230 460 210 500 180" fill="none" stroke="#e0b84a" stroke-width="4"/>
+  <ellipse cx="560" cy="330" rx="26" ry="14" fill="#eef3fb" opacity="0.85"/>
+  <circle cx="210" cy="160" r="8" fill="#fff" opacity="0.25"/>
+  <circle cx="680" cy="140" r="12" fill="#fff" opacity="0.18"/>
+  <circle cx="430" cy="120" r="6" fill="#fff" opacity="0.22"/>
+</svg>
