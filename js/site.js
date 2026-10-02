@@ -10,7 +10,7 @@
 
   const page = document.body.getAttribute("data-page") || "";
   const isCurrent = (key) => (page === key ? ' aria-current="page"' : "");
-  const servicesOpen = ["services", "commercial", "rental", "packages", "maintenance"].includes(page);
+  const servicesOpen = ["services", "rental", "packages", "maintenance"].includes(page);
 
   const logo = `
     <a class="logo" href="${contact.websiteUrl}" aria-label="AquaLuSan home">
@@ -27,11 +27,8 @@
       <div class="nav-item${servicesOpen ? " open" : ""}">
         <button class="drop-toggle" type="button" aria-expanded="${servicesOpen}" aria-controls="services-menu">Services</button>
         <div class="dropdown" id="services-menu">
-          <a href="services.html"${isCurrent("services")}>All services</a>
-          <a href="commercial.html"${isCurrent("commercial")}>Commercial aquarium services</a>
-          <a href="rental.html"${isCurrent("rental")}>Aquarium rental</a>
-          <a href="packages.html"${isCurrent("packages")}>All-in-one packages</a>
-          <a href="maintenance.html"${isCurrent("maintenance")}>Aquarium maintenance</a>
+          <a href="packages.html"${isCurrent("packages")}>All-in-one aquarium packages</a>
+          <a href="rental.html"${page === "rental" || page === "maintenance" ? ' aria-current="page"' : ""}>Aquarium rental and maintenance</a>
         </div>
       </div>
       <a href="portfolio.html"${isCurrent("portfolio")}>Portfolio</a>
@@ -65,14 +62,8 @@
           <div>
             <h4>Services</h4>
             <div class="footer-links">
-              <a href="services.html">Professional aquarium design</a>
-              <a href="services.html">Aquascaping</a>
-              <a href="services.html">Aquarium installation</a>
-              <a href="commercial.html">Commercial aquarium services</a>
-              <a href="rental.html">Aquarium rental</a>
               <a href="packages.html">All-in-one aquarium packages</a>
-              <a href="maintenance.html">Aquarium maintenance</a>
-              <a href="about.html">Import &amp; wholesale</a>
+              <a href="rental.html">Aquarium rental and maintenance</a>
             </div>
           </div>
           <div>
