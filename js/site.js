@@ -6,13 +6,16 @@
     whatsapp: "61456493395",
     websiteDisplay: "aqualusan.com.au",
     websiteUrl: "https://aqualusan.com.au",
-    email: "Aqualusan@gmail.com",
+    email: "aqualusan@gmail.com",
     facebook: "https://www.facebook.com/share/1EnbQx4eUw/?mibextid=wwXIfr",
     instagram: "https://www.instagram.com/aqualusan"
   };
 
   const socials = `
     <div class="socials">
+      <a href="mailto:${contact.email}" aria-label="Email AquaLuSan">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.24l7.4 6.48a1 1 0 0 0 1.2 0L20 8.24V18H4z"/></svg>
+      </a>
       <a href="https://wa.me/${contact.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp AquaLuSan">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.33.16 11.9c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.9 11.9 0 0 0 5.76 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.44zM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.64-.24-.37a9.86 9.86 0 0 1-1.51-5.28c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm5.43-7.4c-.3-.15-1.76-.87-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.65-2.05c-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48 1.78.77 2.48.84 3.37.7.51-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
       </a>
@@ -30,7 +33,7 @@
 
   const logo = `
     <a class="logo" href="${contact.websiteUrl}" aria-label="AquaLuSan home">
-      <img class="logo-img" src="images/logo.jpg?v=banner" alt="AquaLuSan">
+      <img class="logo-img" src="images/logo.png?v=clear" alt="AquaLuSan">
     </a>`;
 
   const nav = `
@@ -92,6 +95,7 @@
             <div class="footer-links">
               <span>Eric Liu</span>
               <a href="tel:${contact.phoneTel}">0456 493 395</a>
+              <a href="mailto:${contact.email}">${contact.email}</a>
             </div>
             ${socials}
           </div>
@@ -204,4 +208,20 @@
       }
     });
   });
+
+  const adTrigger = document.querySelector(".ad-trigger");
+  const adDetails = document.getElementById("ad-details");
+  if (adTrigger && adDetails) {
+    const openAd = (open) => {
+      adTrigger.setAttribute("aria-expanded", String(open));
+      adDetails.hidden = !open;
+      if (open) adDetails.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    adTrigger.addEventListener("click", () => {
+      openAd(adTrigger.getAttribute("aria-expanded") !== "true");
+    });
+    if (window.location.hash === "#ad-details" || window.location.hash === "#ad") {
+      openAd(true);
+    }
+  }
 })();
