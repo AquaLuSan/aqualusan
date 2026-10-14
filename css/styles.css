@@ -234,6 +234,15 @@ p { margin: 0 0 1rem; }
   background-size: cover;
   background-position: center;
 }
+.hero-home {
+  background-image:
+    linear-gradient(105deg, rgba(18, 28, 56, 0.72) 0%, rgba(36, 63, 134, 0.38) 48%, rgba(18, 28, 56, 0.22) 100%),
+    url("../images/hero-tank.jpg?v=hard1");
+  background-position: center 42%;
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+}
 .hero .wrap { position: relative; z-index: 1; }
 .hero .eyebrow {
   background: rgba(255, 255, 255, 0.16);
@@ -444,19 +453,6 @@ p { margin: 0 0 1rem; }
   max-width: 46rem;
 }
 .story p { font-size: 1.05rem; }
-.lang-switch {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0 0;
-}
-.zh {
-  font-family: "Noto Sans TC", "PingFang TC", "Hiragino Sans GB", sans-serif;
-  line-height: 1.85;
-}
-.zh h2, .zh h3 {
-  font-family: "Noto Sans TC", "PingFang TC", sans-serif;
-  letter-spacing: 0;
-}
 
 .split {
   display: grid;
@@ -633,6 +629,9 @@ a.project {
   color: inherit;
   display: block;
   transition: transform 0.15s ease, border-color 0.15s ease;
+}
+a.project[hidden] {
+  display: none;
 }
 a.project:hover {
   transform: translateY(-2px);
