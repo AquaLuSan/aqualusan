@@ -624,18 +624,76 @@ legend {
   color: var(--green-2);
 }
 .contact-panel .socials a:hover { background: var(--tint-2); }
-a.project {
+a.project,
+button.project {
   text-decoration: none;
   color: inherit;
   display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
-a.project[hidden] {
+a.project[hidden],
+button.project[hidden] {
   display: none;
 }
-a.project:hover {
+a.project:hover,
+button.project:hover {
   transform: translateY(-2px);
   border-color: var(--green);
+}
+.album-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.album {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: rgba(18, 28, 56, 0.92);
+  color: #fff;
+  padding: 1rem;
+}
+.album[hidden] { display: none; }
+.album-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+.album-stage {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+}
+.album-stage img {
+  max-width: 100%;
+  max-height: calc(100vh - 9rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.album-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.album-nav button,
+.album-toolbar button {
+  min-height: 44px;
 }
 
 .mobile-cta { display: none; }

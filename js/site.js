@@ -209,6 +209,85 @@
     });
   });
 
+  const albums = {
+    tropical: [
+      { src: "images/section-bg.jpg", alt: "Tropical community aquarium with angelfish and tetras" },
+      { src: "images/tropical-2.jpg", alt: "Tropical aquarium with angelfish, tetras and driftwood" }
+    ]
+  };
+
+  const albumRoot = document.createElement("div");
+  albumRoot.className = "album";
+  albumRoot.hidden = true;
+  albumRoot.setAttribute("role", "dialog");
+  albumRoot.setAttribute("aria-modal", "true");
+  albumRoot.setAttribute("aria-label", "Tank photos");
+  albumRoot.innerHTML = `
+    <div class="album-toolbar">
+      <p class="album-count" data-album-count></p>
+      <button class="btn btn-secondary" type="button" data-album-close>Close</button>
+    </div>
+    <div class="album-stage">
+      <img data-album-image alt="">
+    </div>
+    <div class="album-nav">
+      <button class="btn btn-secondary" type="button" data-album-prev>Previous</button>
+      <button class="btn btn-secondary" type="button" data-album-next>Next</button>
+    </div>`;
+  document.body.appendChild(albumRoot);
+
+  const albumImage = albumRoot.querySelector("[data-album-image]");
+  const albumCount = albumRoot.querySelector("[data-album-count]");
+  let albumPhotos = [];
+  let albumIndex = 0;
+
+  const showAlbumPhoto = () => {
+    const photo = albumPhotos[albumIndex];
+    if (!photo) return;
+    albumImage.src = photo.src;
+    albumImage.alt = photo.alt;
+    albumCount.textContent = `${albumIndex + 1} / ${albumPhotos.length}`;
+  };
+
+  const closeAlbum = () => {
+    albumRoot.hidden = true;
+    document.body.style.overflow = "";
+  };
+
+  const openAlbum = (name) => {
+    albumPhotos = albums[name] || [];
+    if (!albumPhotos.length) return;
+    albumIndex = 0;
+    showAlbumPhoto();
+    albumRoot.hidden = false;
+    document.body.style.overflow = "hidden";
+  };
+
+  document.querySelectorAll("[data-album]").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      openAlbum(el.getAttribute("data-album"));
+    });
+  });
+  albumRoot.querySelector("[data-album-close]").addEventListener("click", closeAlbum);
+  albumRoot.querySelector("[data-album-prev]").addEventListener("click", () => {
+    albumIndex = (albumIndex - 1 + albumPhotos.length) % albumPhotos.length;
+    showAlbumPhoto();
+  });
+  albumRoot.querySelector("[data-album-next]").addEventListener("click", () => {
+    albumIndex = (albumIndex + 1) % albumPhotos.length;
+    showAlbumPhoto();
+  });
+  albumRoot.addEventListener("click", (event) => {
+    if (event.target === albumRoot) closeAlbum();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (albumRoot.hidden) return;
+    if (event.key === "Escape") closeAlbum();
+    if (event.key === "ArrowLeft") albumRoot.querySelector("[data-album-prev]").click();
+    if (event.key === "ArrowRight") albumRoot.querySelector("[data-album-next]").click();
+  });
+
   const adTrigger = document.querySelector(".ad-trigger");
   const adDetails = document.getElementById("ad-details");
   if (adTrigger && adDetails) {
