@@ -47,6 +47,7 @@
         <button class="drop-toggle" type="button" aria-expanded="${servicesOpen}" aria-controls="services-menu">Services</button>
         <div class="dropdown" id="services-menu">
           <a href="packages.html"${isCurrent("packages")}>All-in-one aquarium packages</a>
+          <a href="index.html#dry-goods">Aquarium dry goods</a>
           <a href="rental.html"${page === "rental" || page === "maintenance" ? ' aria-current="page"' : ""}>Aquarium rental and maintenance</a>
         </div>
       </div>
@@ -77,6 +78,7 @@
             <h4>Services</h4>
             <div class="footer-links">
               <a href="packages.html">All-in-one aquarium packages</a>
+              <a href="index.html#dry-goods">Aquarium dry goods</a>
               <a href="rental.html">Aquarium rental and maintenance</a>
             </div>
           </div>
