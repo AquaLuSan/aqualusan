@@ -6,7 +6,7 @@
   <title>Request a Quote | AquaLuSan</title>
   <meta name="description" content="Request an aquarium quote from AquaLuSan. Tell us if you have a tank, the size, and the style you prefer.">
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/styles.css?v=home3">
+  <link rel="stylesheet" href="css/styles.css?v=home15">
   <link rel="canonical" href="https://aqualusan.com.au/request-a-quote.html">
 </head>
 <body data-page="quote">
@@ -17,9 +17,9 @@
       <div class="wrap split">
         <div>
           <p class="eyebrow">Request a Quote</p>
-          <h1>Tell us about the aquarium you want.</h1>
-          <p class="lede">Say whether you already have a tank, the size if you know it, and the style you prefer. Quotes are sent to Aqualusan@gmail.com.</p>
-          <ul class="list">
+          <h1 data-quote-title>Tell us about the aquarium you want.</h1>
+          <p class="lede" data-quote-lede>Say whether you already have a tank, the size if you know it, and the style you prefer. Quotes are sent to Aqualusan@gmail.com.</p>
+          <ul class="list" data-quote-points>
             <li>Has an aquarium, or needs a new set</li>
             <li>Size: 60 cm, 90 cm, 120 cm, or another measurement</li>
             <li>Style: tropical, goldfish, cichlids or other</li>
@@ -42,36 +42,53 @@
               <label for="phone">Phone</label>
               <input id="phone" name="Phone" type="tel" required>
             </div>
-            <fieldset class="full">
-              <legend>Do you already have an aquarium?</legend>
-              <div class="choices">
-                <label><input type="radio" name="Has aquarium" value="Has an aquarium" required> Has an aquarium</label>
-                <label><input type="radio" name="Has aquarium" value="Does not have an aquarium"> Does not have an aquarium</label>
+            <input type="hidden" id="service" name="Service" value="">
+            <div class="full" id="quote-aquarium-fields">
+              <fieldset class="full">
+                <legend>Do you already have an aquarium?</legend>
+                <div class="choices">
+                  <label><input type="radio" name="Has aquarium" value="Has an aquarium" required> Has an aquarium</label>
+                  <label><input type="radio" name="Has aquarium" value="Does not have an aquarium"> Does not have an aquarium</label>
+                </div>
+              </fieldset>
+              <fieldset class="full">
+                <legend>Aquarium size</legend>
+                <div class="choices">
+                  <label><input type="radio" name="Size known" value="I know the size" required> I know the size</label>
+                  <label><input type="radio" name="Size known" value="I don't know the size"> I don't know the size</label>
+                </div>
+                <label for="tank-size">Size</label>
+                <input id="tank-size" name="Size" placeholder="e.g. 90 cm, or 90 × 45 × 45 cm" disabled>
+              </fieldset>
+              <div class="full">
+                <label for="style">Aquarium style</label>
+                <select id="style" name="Aquarium style" required>
+                  <option value="">Select one</option>
+                  <option value="Tropical">Tropical</option>
+                  <option value="Goldfish">Goldfish</option>
+                  <option value="Cichlids">Cichlids</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
-            </fieldset>
-            <fieldset class="full">
-              <legend>Aquarium size</legend>
-              <div class="choices">
-                <label><input type="radio" name="Size known" value="I know the size" required> I know the size</label>
-                <label><input type="radio" name="Size known" value="I don't know the size"> I don't know the size</label>
+              <div class="full">
+                <label for="notes">Additional notes</label>
+                <textarea id="notes" name="Additional notes" maxlength="200" placeholder="Up to 200 characters"></textarea>
+                <p class="char-count"><span data-count>0</span>/200</p>
               </div>
-              <label for="tank-size">Size</label>
-              <input id="tank-size" name="Size" placeholder="e.g. 90 cm, or 90 × 45 × 45 cm" disabled>
-            </fieldset>
-            <div class="full">
-              <label for="style">Aquarium style</label>
-              <select id="style" name="Aquarium style" required>
-                <option value="">Select one</option>
-                <option value="Tropical">Tropical</option>
-                <option value="Goldfish">Goldfish</option>
-                <option value="Cichlids">Cichlids</option>
-                <option value="Other">Other</option>
-              </select>
             </div>
-            <div class="full">
-              <label for="notes">Additional notes</label>
-              <textarea id="notes" name="Additional notes" maxlength="200" placeholder="Up to 200 characters"></textarea>
-              <p class="char-count"><span data-count>0</span>/200</p>
+            <div class="full" id="quote-dry-goods-fields" hidden>
+              <fieldset class="full">
+                <legend>Which dry goods do you need?</legend>
+                <div class="choices">
+                  <label><input type="checkbox" name="Dry goods topic" value="Fish tank"> Fish tank</label>
+                  <label><input type="checkbox" name="Dry goods topic" value="Filter media"> Filter media</label>
+                  <label><input type="checkbox" name="Dry goods topic" value="Others"> Others</label>
+                </div>
+              </fieldset>
+              <div class="full">
+                <label for="shop-details">Shop details</label>
+                <textarea id="shop-details" name="Shop details" maxlength="200" placeholder="If you are an aquarium shop, include your shop name and details for a wholesale price"></textarea>
+              </div>
             </div>
           </div>
           <div class="form-actions">
@@ -84,6 +101,6 @@
     </section>
   </main>
   <div id="site-footer"></div>
-  <script src="js/site.js?v=home4"></script>
+  <script src="js/site.js?v=home7"></script>
 </body>
 </html>

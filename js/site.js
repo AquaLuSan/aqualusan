@@ -149,12 +149,46 @@
   }
 
   const params = new URLSearchParams(window.location.search);
-  const serviceSelect = document.getElementById("service");
-  if (serviceSelect && params.get("service")) {
-    const wanted = params.get("service");
-    [...serviceSelect.options].forEach((opt) => {
-      if (opt.value === wanted || opt.textContent === wanted) serviceSelect.value = opt.value || opt.textContent;
+  const serviceField = document.getElementById("service");
+  const wantedService = params.get("service") || "";
+  if (serviceField && wantedService) {
+    if (serviceField.tagName === "SELECT") {
+      [...serviceField.options].forEach((opt) => {
+        if (opt.value === wantedService || opt.textContent === wantedService) {
+          serviceField.value = opt.value || opt.textContent;
+        }
+      });
+    } else {
+      serviceField.value = wantedService;
+    }
+  }
+
+  const aquariumFields = document.getElementById("quote-aquarium-fields");
+  const dryGoodsFields = document.getElementById("quote-dry-goods-fields");
+  const isDryGoodsQuote = wantedService === "Aquarium dry goods";
+  if (aquariumFields && dryGoodsFields) {
+    aquariumFields.hidden = isDryGoodsQuote;
+    dryGoodsFields.hidden = !isDryGoodsQuote;
+    aquariumFields.querySelectorAll("input, select, textarea").forEach((el) => {
+      el.disabled = isDryGoodsQuote;
+      if (isDryGoodsQuote) el.required = false;
     });
+    dryGoodsFields.querySelectorAll("input, textarea").forEach((el) => {
+      el.disabled = !isDryGoodsQuote;
+    });
+    if (isDryGoodsQuote) {
+      const title = document.querySelector("[data-quote-title]");
+      const lede = document.querySelector("[data-quote-lede]");
+      const points = document.querySelector("[data-quote-points]");
+      if (title) title.textContent = "Request a dry goods quote.";
+      if (lede) lede.textContent = "Choose the topics you need. If you are an aquarium shop, include your shop details for a wholesale price. Quotes are sent to Aqualusan@gmail.com.";
+      if (points) {
+        points.innerHTML = `
+            <li>Fish tank</li>
+            <li>Filter media</li>
+            <li>Others</li>`;
+      }
+    }
   }
 
   const sizeInput = document.getElementById("tank-size");
@@ -194,6 +228,17 @@
   document.querySelectorAll("form[data-lead]").forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
+      if (isDryGoodsQuote && dryGoodsFields && !dryGoodsFields.hidden) {
+        const picked = dryGoodsFields.querySelectorAll('input[name="Dry goods topic"]:checked');
+        if (!picked.length) {
+          const alertBox = form.querySelector(".alert");
+          if (alertBox) {
+            alertBox.classList.add("show");
+            alertBox.textContent = "Please select at least one dry goods topic.";
+          }
+          return;
+        }
+      }
       const data = new FormData(form);
       const lead = form.getAttribute("data-lead") || "enquiry";
       const lines = [`AquaLuSan ${lead}`];
