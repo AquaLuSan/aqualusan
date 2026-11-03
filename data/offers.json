@@ -1,0 +1,35 @@
+{
+  "intervalMs": 5000,
+  "slides": [
+    {
+      "type": "image",
+      "src": "images/all-in-one-flyer.jpg?v=ad3",
+      "alt": "AquaLuSan all-in-one aquarium set advertisement"
+    },
+    {
+      "type": "image",
+      "src": "images/hero-tank.jpg?v=hard1",
+      "alt": "Hardscape aquarium display"
+    },
+    {
+      "type": "image",
+      "src": "images/tropical-2.jpg",
+      "alt": "Tropical aquarium with angelfish, tetras and driftwood"
+    },
+    {
+      "type": "image",
+      "src": "images/offers/mini-scape.jpg",
+      "alt": "DIY mini aquascape cube with plants, stone and LED light"
+    },
+    {
+      "type": "image",
+      "src": "images/offers/diy-mini-ad.jpg",
+      "alt": "AquaLuSan DIY Mini Aquascape, 88 dollars AUD"
+    },
+    {
+      "type": "image",
+      "src": "images/offers/goldfish-display.jpg",
+      "alt": "Goldfish aquarium on a white cabinet"
+    }
+  ]
+}

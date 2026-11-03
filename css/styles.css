@@ -94,17 +94,90 @@ p { margin: 0 0 1rem; }
   object-fit: contain;
   background: transparent;
 }
-.ad-trigger {
-  display: block;
-  width: 100%;
-  padding: 0;
+.offer-show {
   border: 1px solid var(--line);
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
-  cursor: pointer;
   box-shadow: var(--shadow);
+}
+.offer-stage {
+  position: relative;
+  background: #f8fafc;
+  min-height: 220px;
+}
+.offer-slide {
+  display: none;
+}
+.offer-slide.is-active { display: block; }
+.offer-slide img,
+.offer-slide video {
+  width: 100%;
+  height: auto;
+  max-height: min(88vh, 920px);
+  object-fit: contain;
+  background: #fff;
+  vertical-align: middle;
+}
+.offer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1rem;
+  background: var(--tint);
+}
+.offer-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green-2);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.offer-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.offer-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #b7c4dc;
+  cursor: pointer;
+}
+.offer-dot.is-active { background: var(--green); }
+.offer-status {
+  margin: 0;
+  padding: 0 1.1rem 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+}
+.offer-hint,
+.ad-trigger {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: var(--tint);
+  color: var(--green-2);
+  font-weight: 700;
+  cursor: pointer;
   text-align: left;
+}
+.offer-hint[aria-expanded="true"],
+.ad-trigger[aria-expanded="true"] {
+  background: var(--green);
+  color: #fff;
 }
 .ad-trigger img {
   width: 100%;
@@ -120,13 +193,16 @@ p { margin: 0 0 1rem; }
   color: var(--green-2);
   background: var(--tint);
 }
-.ad-trigger[aria-expanded="true"] .ad-hint {
-  background: var(--green);
-  color: #fff;
-}
 .ad-details {
   margin-top: 1.6rem;
   scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+#byt { scroll-margin-top: calc(var(--header-h) + 1rem); }
+.byt-photos img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #fff;
 }
 
 .nav-toggle {

@@ -47,6 +47,7 @@
         <button class="drop-toggle" type="button" aria-expanded="${servicesOpen}" aria-controls="services-menu">Services</button>
         <div class="dropdown" id="services-menu">
           <a href="packages.html"${isCurrent("packages")}>All-in-one aquarium packages</a>
+          <a href="index.html#byt">Build your tank</a>
           <a href="index.html#dry-goods">Aquarium dry goods</a>
           <a href="rental.html"${page === "rental" || page === "maintenance" ? ' aria-current="page"' : ""}>Aquarium rental and maintenance</a>
         </div>
@@ -78,6 +79,7 @@
             <h4>Services</h4>
             <div class="footer-links">
               <a href="packages.html">All-in-one aquarium packages</a>
+              <a href="index.html#byt">Build your tank</a>
               <a href="index.html#dry-goods">Aquarium dry goods</a>
               <a href="rental.html">Aquarium rental and maintenance</a>
             </div>
@@ -349,5 +351,139 @@
     if (window.location.hash === "#ad-details" || window.location.hash === "#ad") {
       openAd(true);
     }
+  }
+
+  const offerStage = document.querySelector("[data-offer-stage]");
+  if (offerStage) {
+    const dotsEl = document.querySelector("[data-offer-dots]");
+    const statusEl = document.querySelector("[data-offer-status]");
+    const prevBtn = document.querySelector("[data-offer-prev]");
+    const nextBtn = document.querySelector("[data-offer-next]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let slides = [];
+    let index = 0;
+    let timer = 0;
+    let intervalMs = 5000;
+
+    const stopTimer = () => {
+      window.clearInterval(timer);
+      timer = 0;
+    };
+
+    const showSlide = (nextIndex) => {
+      if (!slides.length) return;
+      const current = slides[index];
+      if (current && current.tagName === "VIDEO") {
+        current.pause();
+        current.currentTime = 0;
+      }
+      index = (nextIndex + slides.length) % slides.length;
+      slides.forEach((media, i) => {
+        media.parentElement.classList.toggle("is-active", i === index);
+      });
+      if (dotsEl) {
+        [...dotsEl.children].forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+          dot.setAttribute("aria-selected", String(i === index));
+        });
+      }
+      const active = slides[index];
+      if (statusEl) statusEl.textContent = `${index + 1} / ${slides.length}`;
+      if (active && active.tagName === "VIDEO") {
+        active.muted = true;
+        active.playsInline = true;
+        const play = active.play();
+        if (play && play.catch) play.catch(() => {});
+      }
+    };
+
+    const startTimer = () => {
+      stopTimer();
+      if (reduceMotion || slides.length < 2) return;
+      timer = window.setInterval(() => {
+        const active = slides[index];
+        if (active && active.tagName === "VIDEO" && !active.ended && !active.paused) return;
+        showSlide(index + 1);
+      }, intervalMs);
+    };
+
+    const bindSlide = (wrap, i) => {
+      slides.push(wrap.querySelector("img, video"));
+      if (!dotsEl) return;
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "offer-dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Show slide ${i + 1}`);
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        startTimer();
+      });
+      dotsEl.appendChild(dot);
+    };
+
+    const renderSlides = (items) => {
+      offerStage.innerHTML = "";
+      if (dotsEl) dotsEl.innerHTML = "";
+      slides = [];
+      items.forEach((item, i) => {
+        const wrap = document.createElement("div");
+        wrap.className = "offer-slide";
+        if (item.type === "video") {
+          const video = document.createElement("video");
+          video.src = item.src;
+          video.setAttribute("playsinline", "");
+          video.setAttribute("muted", "");
+          video.muted = true;
+          video.loop = false;
+          video.preload = "metadata";
+          video.setAttribute("aria-label", item.alt || "Offer video");
+          if (item.poster) video.poster = item.poster;
+          video.addEventListener("ended", () => {
+            showSlide(index + 1);
+            startTimer();
+          });
+          wrap.appendChild(video);
+        } else {
+          const img = document.createElement("img");
+          img.src = item.src;
+          img.alt = item.alt || "AquaLuSan offer";
+          wrap.appendChild(img);
+        }
+        offerStage.appendChild(wrap);
+        bindSlide(wrap, i);
+      });
+      const many = slides.length > 1;
+      if (prevBtn) prevBtn.hidden = !many;
+      if (nextBtn) nextBtn.hidden = !many;
+      showSlide(0);
+      startTimer();
+    };
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        showSlide(index - 1);
+        startTimer();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        showSlide(index + 1);
+        startTimer();
+      });
+    }
+    offerStage.addEventListener("mouseenter", stopTimer);
+    offerStage.addEventListener("mouseleave", startTimer);
+
+    fetch("data/offers.json?v=offer3")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        if (data.intervalMs) intervalMs = data.intervalMs;
+        if (Array.isArray(data.slides) && data.slides.length) renderSlides(data.slides);
+      })
+      .catch(() => {
+        slides = [...offerStage.querySelectorAll(".offer-slide img, .offer-slide video")];
+        if (statusEl && slides.length) statusEl.textContent = `1 / ${slides.length}`;
+      });
   }
 })();

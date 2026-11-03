@@ -7,7 +7,7 @@
   <title>AquaLuSan | All-in-one aquarium set from $1,888</title>
   <meta name="description" content="AquaLuSan all-in-one aquarium sets: 60cm $1,888, 90cm $2,499, 120cm $2,888 AUD. Includes tank, cabinet, filter, LED light, landscaping, fish and plants. Rental and maintenance also available.">
   <link rel="icon" href="images/logo.png" type="image/png">
-  <link rel="stylesheet" href="css/styles.css?v=home16">
+  <link rel="stylesheet" href="css/styles.css?v=home18">
   <link rel="canonical" href="https://aqualusan.com.au/">
 </head>
 <body data-page="home">
@@ -18,12 +18,13 @@
       <div class="wrap">
         <p class="eyebrow">Aquariums · Landscaping · Maintenance</p>
         <h1>Bring nature into your space.</h1>
-        <p class="lede">All-in-one aquarium sets, aquarium dry goods, plus rental and maintenance, for homes and commercial spaces.</p>
+        <p class="lede">All-in-one aquarium sets, Build your tank, aquarium dry goods, plus rental and maintenance, for homes and commercial spaces.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="request-a-quote.html">Request a Quote</a>
         </div>
         <nav class="section-select" aria-label="Page sections">
           <a class="btn btn-secondary" href="#ad">All-in-one sets</a>
+          <a class="btn btn-secondary" href="#byt">Build your tank</a>
           <a class="btn btn-secondary" href="#dry-goods">Aquarium dry goods</a>
           <a class="btn btn-secondary" href="#portfolio">Maintenance</a>
           <a class="btn btn-secondary" href="#about-us">About us</a>
@@ -34,14 +35,26 @@
     <section class="section section-white" id="ad">
       <div class="wrap">
         <div class="section-head">
-          <p class="kicker">All-in-one aquarium set</p>
-          <h2>Our main offer.</h2>
-          <p>Tap the advertisement to see sizes, prices and what is included.</p>
+          <p class="kicker">What we offer</p>
+          <h2>What’s on offer.</h2>
+          <p>Photos and film of our tanks and packages. Use the arrows to browse, then tap for sizes, prices and what is included.</p>
         </div>
-        <button class="ad-trigger" type="button" aria-expanded="false" aria-controls="ad-details">
-          <img src="images/all-in-one-flyer.jpg?v=ad3" alt="AquaLuSan all-in-one aquarium set advertisement">
-          <span class="ad-hint">Tap to see sizes, prices and inclusions</span>
-        </button>
+        <div class="offer-show">
+          <div class="offer-stage" data-offer-stage>
+            <div class="offer-slide is-active">
+              <img src="images/all-in-one-flyer.jpg?v=ad3" alt="AquaLuSan all-in-one aquarium set advertisement">
+            </div>
+          </div>
+          <div class="offer-controls">
+            <button class="offer-arrow" type="button" data-offer-prev aria-label="Previous slide">‹</button>
+            <div class="offer-dots" data-offer-dots role="tablist" aria-label="Offer slides"></div>
+            <button class="offer-arrow" type="button" data-offer-next aria-label="Next slide">›</button>
+          </div>
+          <p class="offer-status" data-offer-status></p>
+          <button class="offer-hint ad-trigger" type="button" aria-expanded="false" aria-controls="ad-details">
+            Tap to see sizes, prices and inclusions
+          </button>
+        </div>
         <div id="ad-details" class="ad-details" hidden>
           <div class="section-head">
             <p class="kicker">All-in-one Goal Set</p>
@@ -103,6 +116,43 @@
                 <a class="more" href="rental.html">View rental and maintenance</a>
               </article>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="byt">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">BYT</p>
+          <h2>Build your tank.</h2>
+          <p>DIY Mini Aquascape. A small tank can be a green lifestyle, not only a fish tank. $88 AUD.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="request-a-quote.html?service=Build%20your%20tank">Request a Quote</a>
+          </div>
+        </div>
+        <div class="grid-2 byt-photos">
+          <img src="images/offers/diy-mini-ad.jpg" alt="AquaLuSan DIY Mini Aquascape, 88 dollars AUD">
+          <img src="images/offers/mini-scape.jpg" alt="DIY mini aquascape cube with plants, stone and LED light">
+        </div>
+        <div class="grid-2" style="margin-top:1.6rem">
+          <div>
+            <h3>What’s included</h3>
+            <ul class="list">
+              <li>Complete DIY kit, easy to set up</li>
+              <li>Stylish LED light</li>
+              <li>Natural aquascape design</li>
+              <li>Low maintenance</li>
+            </ul>
+          </div>
+          <div>
+            <h3>DIY in 4 easy steps</h3>
+            <ul class="list">
+              <li>Add substrate</li>
+              <li>Arrange décor</li>
+              <li>Plant and decorate</li>
+              <li>Enjoy your mini ecosystem</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -274,6 +324,6 @@
     </section>
   </main>
   <div id="site-footer"></div>
-  <script src="js/site.js?v=home7"></script>
+  <script src="js/site.js?v=home11"></script>
 </body>
 </html>
